@@ -1,8 +1,18 @@
-<h1><%= @article.title %></h1>
-<p><%= @article.body %></p>
+<h1>All Tags</h1>
 
-<h3>Comments(<%= @article.comments.size %>)</h3>
-<%= render partial: 'articles/comment', collection: @article.comments %>
+<ul id="tags">
+  <% @tags.each do |tag| %>
+    <li>
+      <%= @tag.name %>
+      <%= link_to "delete", tag_path(@tag), method: :delete, 
+          data: {confirm: "Really delete this tag?"} %>
+    </li>
+  <% end %>
+</ul>
+
+
+
+
 <%= link_to "delete", article_path(@article), method: :delete, 
 data: {confirm: "Really delete the article?"} %>
 <%= link_to "edit", edit_article_path(@article) %>
